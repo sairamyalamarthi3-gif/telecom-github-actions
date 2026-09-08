@@ -35,15 +35,11 @@ jobs:
         run: |
           python -c "from availability import calculate_availability; print(f'Circuit availability: {calculate_availability(43200, 20):.3f}%')"
 
-      - name: Build Docker image
-        run: |
-         docker build \
-         -t telecom-availability:${{ github.sha }} \
-         -t telecom-availability:latest \
+          - name: Build Docker image
+          run: docker build -t telecom-availability:${{ github.sha }} -t telecom-availability:latest .
 
-         - name: Run Docker container
-          run: docker run --rm telecom-availability:${{ github.sha }}
+            - name: Run Docker container
+             run: docker run --rm telecom-availability:${{ github.sha }}
 
           - name: List Docker images
             run: docker image ls telecom-availability
-    
