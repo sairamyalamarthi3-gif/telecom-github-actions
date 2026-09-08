@@ -33,3 +33,7 @@ jobs:
 
       - name: Run unit tests
         run: pytest -v
+
+      - name: Display availability result
+        run: |
+          python -c "from availability import calculate_availability; print(f'Circuit availability: {calculate_availability(43200, 20):.3f}%')"
